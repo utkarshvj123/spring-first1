@@ -31,7 +31,6 @@ public class UserController {
                 user.getPassword() == null || user.getPassword().trim().isEmpty() ||
                 user.getConfirmPassword() == null || user.getConfirmPassword().trim().isEmpty() ||
                 user.getPhone() == null || user.getPhone().trim().isEmpty()) {
-
             // Return validation error response if any required field is null or empty
             Response<User> response = new Response<>("All fields are required and cannot be empty.", user, false, HttpStatus.BAD_REQUEST.value());
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);

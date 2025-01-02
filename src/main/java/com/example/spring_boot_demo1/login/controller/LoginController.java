@@ -15,13 +15,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/users")
 
-public class Login {
+public class LoginController {
         @Autowired
         private LoginService loginService;
         @PostMapping("/validate")
         public ResponseEntity<Response<String>> validateUser(@RequestBody Map<String, String> request) {
             String email = request.get("email");
             String password = request.get("password");
+            System.out.println(email);
             if (email == null || password == null) {
                 return ResponseEntity.badRequest()
                         .body(new Response<>("Email or password cannot be null", null, false, HttpStatus.BAD_REQUEST.value()));

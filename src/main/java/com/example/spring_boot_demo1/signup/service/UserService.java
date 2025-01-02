@@ -1,7 +1,7 @@
 package com.example.spring_boot_demo1.signup.service;
 
+import com.example.spring_boot_demo1.signup.entity.UserEntity;
 import com.example.spring_boot_demo1.signup.repository.UserRepository;
-import com.example.spring_boot_demo1.signup.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +12,14 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-    public List<User> getAllUsers() {
+    public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
     }
-    public User createUser(User user) {
-        List<User> users = userRepository.findByEmail(user.getEmail());
-        if (!users.isEmpty()) {
-            throw new IllegalArgumentException("User with email " + user.getEmail() + " already exists.");
+    public UserEntity createUser(UserEntity userEntity) {
+        List<UserEntity> userEntities = userRepository.findByEmail(userEntity.getEmail());
+        if (!userEntities.isEmpty()) {
+            throw new IllegalArgumentException("User with email " + userEntity.getEmail() + " already exists.");
         }
-        return userRepository.save(user);
+        return userRepository.save(userEntity);
     }
 }
